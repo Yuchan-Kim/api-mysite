@@ -1,7 +1,5 @@
 package com.javaex.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +11,7 @@ import com.javaex.util.JsonResult;
 import com.javaex.util.JwtUtil;
 import com.javaex.vo.User;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
@@ -50,6 +49,49 @@ public class UserController {
 			return JsonResult.fail("로그인실패");
 		}
 	}
+    
+    //Edit user info, bring user info
+    @GetMapping("api/users/me")
+    public JsonResult editForm(HttpServletRequest request) {
+    	System.out.println("UserController.editForm()");
+    	
+    	//요청 해더에서 토큰을 꺼낸후 유효성 체크. 정상이면 no 값을 꺼내준다. 
+    	int no = JwtUtil.getNoFromHeader(request);
+    	System.out.println(no);
+    	
+    	if(no != -1) {
+    		User userVo = service.exeEditForm(no);
+    		return JsonResult.success(userVo);
+    	}else {
+    		return JsonResult.fail("토큰 오류");
+    	}
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
    
 }

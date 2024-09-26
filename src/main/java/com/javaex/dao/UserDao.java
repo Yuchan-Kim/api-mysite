@@ -30,29 +30,25 @@ public class UserDao {
 	}
 
     // Update User
-    public User updateUser(int userNum, String id, String name, String pw, String gender) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("userNum", userNum);
-        params.put("id", id);
-        params.put("name", name);
-        params.put("pw", pw);
-        params.put("gender", gender);
+    public User updateUser(User userVo) {
+        
 
-        sqlsession.update("user.updateUser", params);
+        sqlsession.update("user.updateUser", userVo);
 
         User user = new User();
-        user.setUserGender(gender);
-        user.setUserId(id);
-        user.setUserName(name);
-        user.setUserNum(userNum);
-        user.setUserPw(pw);
+        user.setUserGender(userVo.getUserGender());
+        user.setUserId(userVo.getUserId());
+        user.setUserName(userVo.getUserName());
+        user.setUserNum(userVo.getUserNum());
+        user.setUserPw(userVo.getUserPw());
+        
 
         return user;
     }
 
     // Check if User ID Exists
     public boolean existsById(String id) {
-    	int count = sqlsession.selectOne("user.selectUser", id);
+    	int count = sqlsession.selectOne("user.selectUserById", id);
         return count > 0;
     }
 
@@ -64,6 +60,14 @@ public class UserDao {
         System.out.println(count);
         return count;
     }
+    
+ // no로 한명데이터 가져오기(회원정보수정 폼)
+ 	public User userSelectOneByNo(int no) {
+ 		System.out.println("UserDao.userSelectOneByNo()");
+
+ 		User userVo = sqlsession.selectOne("user.selectOneByNo", no);
+ 		return userVo;
+ 	}
 
     
 }

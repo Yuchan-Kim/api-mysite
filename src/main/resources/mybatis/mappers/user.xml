@@ -13,7 +13,7 @@
     </insert>
 
     <!-- Select User for Login -->
-    <select id="selectUser" parameterType="String" resultType="com.javaex.vo.User">
+    <select id="selectUserById" parameterType="String" resultType="com.javaex.vo.User">
 	    <![CDATA[
 			select user_no as userNum, user_id as userId, user_name as userName, user_pw as userPw, user_gender as userGender 
 			from users 
@@ -22,7 +22,22 @@
 	    ]]>
 	</select>
 	
+	<update id="updateUser" parameterType="com.javaex.vo.User">
+    	<![CDATA[
+   		UPDATE user 
+    	SET user_id = #{userId}, user_name = #{userName}, user_pw = #{userPw}, user_gender = #{userGender}
+    	WHERE user_no = #{userNum}
+    	]]>
+	</update>
 	
+	<!-- no로 한명데이터 가져오기(회원정보수정 폼) -->
+	<select id="selectOneByNo" parameterType="int" resultType="com.javaex.vo.User">
+		<![CDATA[ 
+			select 	user_no as userNum, user_id as userId, user_name as userName, user_pw as userPw, user_gender as userGender
+			from users
+			where user_no = #{no}
+		]]>
+	</select>
 
 
 </mapper>

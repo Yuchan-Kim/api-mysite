@@ -29,9 +29,9 @@ public class UserService {
 
 	}
 
-	public User exeUpdate (int userNum, String id, String name, String pw, String gender) {
+	public User exeUpdate (User userVo) {
 		System.out.println("UserService.exeUpdate()");
-		User user = dao.updateUser(userNum,id,name,pw,gender);
+		User user = dao.updateUser(userVo);
 		return user;
 	}
 
@@ -52,6 +52,14 @@ public class UserService {
 
     	return true;
     }
+    
+ // 회원정보수정폼(1명 데이터가져오기)
+ 	public User exeEditForm(int no) {
+ 		System.out.println("UserService.exeEditForm()");
+
+ 		User userVo = dao.userSelectOneByNo(no);
+ 		return userVo;
+ 	}
 
     
 
