@@ -3,6 +3,7 @@ package com.javaex.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,12 +61,31 @@ public class UserController {
     	System.out.println(no);
     	
     	if(no != -1) {
-    		User userVo = service.exeEditForm(no);
-    		return JsonResult.success(userVo);
+    		User authUser = service.exeEditForm(no);
+    		System.out.println(authUser.toString());
+    		return JsonResult.success(authUser);
     	}else {
     		return JsonResult.fail("토큰 오류");
     	}
     }
+    
+    //Update User info
+    @PutMapping("api/users/me")
+    public JsonResult modifyUserInfo(HttpServletRequest request, @RequestBody User userVo) {
+    	System.out.println("UserController.modifyUserInfo()");
+    	System.out.println(userVo);
+    	int no = JwtUtil.getNoFromHeader(request);
+    	userVo.setUserNum(no);
+    	System.out.println(userVo);
+    	service.exeUpdate(userVo);
+    	if(no != -1) {
+    		return JsonResult.success(userVo);
+    	}else {
+    		return JsonResult.fail("토큰 오류");
+    	}
+    	
+    }
+    
     
     
     

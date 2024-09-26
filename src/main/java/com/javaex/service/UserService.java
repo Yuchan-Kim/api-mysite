@@ -29,10 +29,10 @@ public class UserService {
 
 	}
 
-	public User exeUpdate (User userVo) {
+	public int exeUpdate (User userVo) {
 		System.out.println("UserService.exeUpdate()");
-		User user = dao.updateUser(userVo);
-		return user;
+		int count = dao.updateUser(userVo);
+		return count;
 	}
 
 	// 아이디 중복 체크 서비스 메서드

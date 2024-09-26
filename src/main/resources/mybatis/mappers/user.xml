@@ -24,8 +24,8 @@
 	
 	<update id="updateUser" parameterType="com.javaex.vo.User">
     	<![CDATA[
-   		UPDATE user 
-    	SET user_id = #{userId}, user_name = #{userName}, user_pw = #{userPw}, user_gender = #{userGender}
+   		UPDATE users 
+    	SET  user_name = #{userName}, user_pw = #{userPw}, user_gender = #{userGender}
     	WHERE user_no = #{userNum}
     	]]>
 	</update>

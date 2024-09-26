@@ -25,25 +25,16 @@ public class UserDao {
     // Select User for Login
 	public User selectUser(String id ) {
 		System.out.println("UserDao.selectUser()");
-		User authUser = sqlsession.selectOne("user.selectUser", id);
+		User authUser = sqlsession.selectOne("user.selectUserById", id);
 		return authUser;
 	}
 
     // Update User
-    public User updateUser(User userVo) {
-        
+    public int updateUser(User userVo) {
+        System.out.println("UserDao.updateUser()");
+        int count = sqlsession.update("user.updateUser", userVo);
 
-        sqlsession.update("user.updateUser", userVo);
-
-        User user = new User();
-        user.setUserGender(userVo.getUserGender());
-        user.setUserId(userVo.getUserId());
-        user.setUserName(userVo.getUserName());
-        user.setUserNum(userVo.getUserNum());
-        user.setUserPw(userVo.getUserPw());
-        
-
-        return user;
+        return count;
     }
 
     // Check if User ID Exists
