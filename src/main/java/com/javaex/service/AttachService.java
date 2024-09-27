@@ -74,8 +74,23 @@ public class AttachService {
 		
 		//사진에 기본정보로 우리가 관리할 정보를 뽑아내야된다 -->db저장
 		//파일 저장 폴더
-		String saveDir = "/Users/yuchan/Desktop/upload/";
+		String saveDir = "";
 		
+		String osName = System.getProperty("os.name").toLowerCase();
+		System.out.println("-----------------------------------");
+		System.out.println(osName);
+		System.out.println("-----------------------------------");
+		if (osName.contains("linux")) {
+			System.out.println("LINUX");
+			saveDir = "/app/upload";
+		}else if (osName.contains("mac")) {
+			System.out.println("MAC");
+			saveDir = "/Users/yuchan/Desktop/upload/";
+		}else if (osName.contains("windows")) {
+			System.out.println("Windows");
+			saveDir = "C:\\javastudy\\upload\\";
+		}
+
 		
 		//오리지날 파일명
 		String orgName = attach.getImg().getOriginalFilename();
@@ -93,9 +108,16 @@ public class AttachService {
 		String savaName = System.currentTimeMillis() + UUID.randomUUID().toString()+exeName;
 		System.out.println("savaName: " + savaName);
 		
-		//파일 전체 경로+파일명
-		String filePath = saveDir + savaName;
-		System.out.println("filePath: " + filePath);
+		//파일 전체 경로+파일명 
+		String filePath = "";
+		if (osName.contains("windows")) {
+			filePath = saveDir + "\\" + savaName;
+			System.out.println("filePath: " + filePath);
+		}else if (osName.contains("mac")){
+			filePath = saveDir + savaName;
+			System.out.println("filePath: " + filePath);
+		}
+		
 		
 		//(1)db저장
 		//(1-1) 데이타 묶기

@@ -31,8 +31,8 @@ public class AttachController {
 		
 		System.out.println("AttachController.form2()");
 		System.out.println(attach);
-		service.exeUpload2(attach);
-		return JsonResult.success("");
+		String result = service.exeUpload2(attach);
+		return JsonResult.success(result);
 
 		
 	}
