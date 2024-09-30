@@ -19,7 +19,7 @@ public class AttachService {
 		
 		//사진에 기본정보로 우리가 관리할 정보를 뽑아내야된다 -->db저장
 		//파일 저장 폴더
-		String saveDir = "/Users/yuchan/Desktop/upload/";
+		String saveDir = "/home/ec2-user/upload/";
 		
 		
 		//오리지날 파일명
@@ -85,7 +85,7 @@ public class AttachService {
 			saveDir = "/app/upload";
 		}else if (osName.contains("mac")) {
 			System.out.println("MAC");
-			saveDir = "/Users/yuchan/Desktop/upload/";
+			saveDir = "/home/ec2-user/upload/";
 		}else if (osName.contains("windows")) {
 			System.out.println("Windows");
 			saveDir = "C:\\javastudy\\upload\\";
