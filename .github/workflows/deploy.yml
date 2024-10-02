@@ -4,7 +4,7 @@ on:
   push: 
     branches: 
       - master # Trigger on push to master branch
-
+#check
 jobs: 
   build-and-deploy: 
     runs-on: ubuntu-latest 
@@ -46,7 +46,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             sudo mkdir -p /home/ec2-user/upload
-            sudo docker pull yuchankim/mysite:latest
+            sudo docker pull yuchankim/mysite:latest 
             sudo docker stop mysite || true
             sudo docker rm mysite || true
             sudo docker run -d \
