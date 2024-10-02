@@ -12,7 +12,7 @@ import com.javaex.util.JsonResult;
 import com.javaex.vo.AttachVo2;
 
 @RestController
-public class AttachController {
+public class AttachController{
 	
 	@Autowired
 	private AttachService service;
