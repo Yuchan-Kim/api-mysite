@@ -126,7 +126,7 @@ public class AttachService {
 		attach.setSaveName(savaName);
 		attach.setFilePath(filePath);
 		attach.setFileSize(fileSize);
-		System.out.println(attach);
+		System.out.println(attach); 
 		
         //(1-2) dao를 통해서 db에저장
 		//과제.....
