@@ -86,7 +86,7 @@ public class AttachService {
 			saveDir = "/app/upload";
 		}else if (osName.contains("mac")) {
 			System.out.println("MAC");
-			saveDir = "/home/ec2-user/upload/";
+			saveDir = "/app/upload/";
 		}else if (osName.contains("windows")) {
 			System.out.println("Windows");
 			saveDir = "C:\\javastudy\\upload\\";
