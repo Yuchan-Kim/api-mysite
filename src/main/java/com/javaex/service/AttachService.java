@@ -20,7 +20,7 @@ public class AttachService {
 		//사진에 기본정보로 우리가 관리할 정보를 뽑아내야된다 -->db저장
 		//파일 저장 폴더
 		//String saveDir = "/home/ec2-user/upload/";
-		String saveDir = "/app/upload";
+		String saveDir = "/app/upload/";
 		
 		
 		//오리지날 파일명
@@ -83,7 +83,7 @@ public class AttachService {
 		System.out.println("-----------------------------------");
 		if (osName.contains("linux")) {
 			System.out.println("LINUX");
-			saveDir = "/app/upload";
+			saveDir = "/app/upload/";
 		}else if (osName.contains("mac")) {
 			System.out.println("MAC");
 			saveDir = "/app/upload/";

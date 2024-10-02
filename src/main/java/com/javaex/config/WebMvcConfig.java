@@ -26,14 +26,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		String osName = System.getProperty("os.name").toLowerCase();
 		
 		if (osName.contains("windows")) {
-			saveDir = "/app/upload";
+			saveDir = "/app/upload/";
 			registry.addResourceHandler("/upload/**")
             //.addResourceLocations("file:C:\\javaStudy\\upload\\");
             .addResourceLocations("file:" + saveDir);
 
 			
 		}else {
-			saveDir = "/app/upload";
+			saveDir = "/app/upload/";
 			registry.addResourceHandler("/upload/**")
             .addResourceLocations("file:" + saveDir);
 		}
